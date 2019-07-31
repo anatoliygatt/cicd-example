@@ -6,23 +6,13 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-      - run:
-          name: install-npm
-          command: "sudo npm install -g npm"
       - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-      - run:
-          name: install-dependencies
-          command: npm install
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      - run: npm install
       - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
           paths:
-            - ./node_modules
-      - run:
-          name: test
-          command: npm test
-      - store_artifacts:
-          path: test-results.xml
-          prefix: tests
-      - store_test_results:
-          path: test-results.xml
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: npm test
