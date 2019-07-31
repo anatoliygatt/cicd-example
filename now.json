@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "cicd-example-now-production",
+  "name": "cicd-example",
   "alias": ["cicd-example.anatoliygatt.now.sh"],
   "builds": [{ "src": "index.js", "use": "@now/node@canary" }],
   "routes": [{ "src": "/graphql", "dest": "index.js" }]
