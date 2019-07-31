@@ -37,7 +37,9 @@ jobs:
         command: sudo npm install --global --unsafe-perm now
       - deploy:
         name: Deploy & Alias
-        command: now --token $ZEIT_TOKEN --local-config now.json
+        command: |
+          now --token $ZEIT_TOKEN --local-config now.json
+          now --token $ZEIT_TOKEN --local-config now.json alias
 
 workflows:
   version: 2.1
