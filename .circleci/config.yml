@@ -1,9 +1,11 @@
+defaults: &defaults
+  docker:
+    - image: circleci/node:latest
+  working_directory: ~/cicd-example
 version: 2.1
 jobs:
-  build:
-    working_directory: ~/cicd-example
-    docker:
-      - image: circleci/node:latest
+  checkout:
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -15,4 +17,32 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths: .
+  tests:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/cicd-example
+      - run: npm install
       - run: npm test
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/cicd-example
+      - run: sudo npm install --global --unsafe-perm now
+      - deploy: now --token $ZEIT_TOKEN --local-config now.json
+
+workflows:
+  version: 2.1
+  deploy_with_tests:
+    jobs:
+      - checkout
+      - tests:
+          requires:
+            - checkout
+      - deploy:
+          requires:
+            - tests
