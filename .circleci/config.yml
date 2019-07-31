@@ -33,13 +33,13 @@ jobs:
       - attach_workspace:
           at: ~/cicd-example
       - run:
-        name: Install Now CLI
-        command: sudo npm install --global --unsafe-perm now
+          name: Install Now CLI
+          command: sudo npm install --global --unsafe-perm now
       - deploy:
-        name: Deploy & Alias
-        command: |
-          now --token $ZEIT_TOKEN --local-config now.json
-          now --token $ZEIT_TOKEN --local-config now.json alias
+          name: Deploy & Alias
+          command: |
+            now --token $ZEIT_TOKEN --local-config now.json
+            now --token $ZEIT_TOKEN --local-config now.json alias
 
 workflows:
   version: 2
