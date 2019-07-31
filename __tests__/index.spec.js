@@ -1,4 +1,4 @@
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-micro");
 const { createTestClient } = require("apollo-server-testing");
 const typeDefs = require("../typeDefs");
 const resolvers = require("../resolvers");

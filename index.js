@@ -1,15 +1,12 @@
-const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer } = require("apollo-server-micro");
 const typeDefs = require("./typeDefs");
 const resolvers = require("./resolvers");
 
-const app = express();
-
 const server = new ApolloServer({
   typeDefs,
-  resolvers
+  resolvers,
+  introspection: true,
+  playground: true
 });
 
-server.applyMiddleware({ app, cors: false });
-
-app.listen(3000);
+module.exports = server.createHandler();
