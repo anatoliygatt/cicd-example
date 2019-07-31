@@ -1,0 +1,26 @@
+{
+  "name": "cicd-example",
+  "version": "1.0.0",
+  "description": "CI/CD with CircleCI and Now",
+  "author": {
+    "name": "Anatoliy Gatt",
+    "email": "anatoliy@gatt.io"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "apollo-server-express": "^2.6.4",
+    "apollo-server-testing": "^2.6.9",
+    "express": "^4.17.1",
+    "graphql": "^14.3.1",
+    "mongoose": "^5.6.0",
+    "shortid": "^2.2.14"
+  },
+  "devDependencies": {
+    "jest": "^24.8.0"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  }
+}
