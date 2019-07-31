@@ -1,8 +1,6 @@
 {
   "version": 2,
-  "name": "circleci-with-zeith-now-production",
-  "type": "npm",
-  "forwardNpm": true,
+  "name": "cicd-example-now-production",
   "alias": ["cicd-example.anatoliygatt.now.sh"],
   "builds": [{ "src": "index.js", "use": "@now/node@canary" }],
   "routes": [{ "src": "/graphql", "dest": "index.js" }]
