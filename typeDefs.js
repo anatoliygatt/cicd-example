@@ -8,7 +8,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    viewer: User
+    viewer(id: ID!): User
   }
 `;
 
