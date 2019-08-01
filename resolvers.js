@@ -1,10 +1,9 @@
 const resolvers = {
   Query: {
-    viewer: () => ({
-      id: "1",
-      firstName: "Anatoliy",
-      lastName: "Gatt"
-    })
+    viewer: async (_, { id }, { models }) => {
+      const viewer = await models.User.findById(id);
+      return viewer;
+    }
   }
 };
 

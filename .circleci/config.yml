@@ -4,6 +4,7 @@ jobs:
     working_directory: ~/cicd-example
     docker:
       - image: circleci/node:latest
+      - image: mongo:3.4.4
     steps:
       - checkout
       - restore_cache:
