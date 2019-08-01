@@ -21,6 +21,7 @@ describe("queries", () => {
           viewer {
             id
             firstName
+            lastName
           }
         }
       `
