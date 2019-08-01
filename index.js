@@ -5,12 +5,17 @@ const resolvers = require("./resolvers");
 const mongoose = require("mongoose");
 const { User } = require("./models");
 
-mongoose.connect("mongodb://localhost:27017", {
-  dbName: "cicd-example",
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useFindAndModify: false
-});
+mongoose.connect(
+  process.env.NODE_ENV === "production"
+    ? process.env.MONGODB_URI
+    : "mongodb://localhost:27017",
+  {
+    dbName: "cicd-example",
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  }
+);
 
 const app = express();
 
