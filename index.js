@@ -10,6 +10,6 @@ const server = new ApolloServer({
   resolvers
 });
 
-server.applyMiddleware({ app, cors: false });
+server.applyMiddleware({ app });
 
 app.listen(3000);
