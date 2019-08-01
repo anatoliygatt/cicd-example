@@ -8,9 +8,8 @@ const { User } = require("./models");
 mongoose.connect(
   process.env.NODE_ENV === "production"
     ? process.env.MONGODB_URI
-    : "mongodb://localhost:27017",
+    : "mongodb://localhost:27017/cicd-example",
   {
-    dbName: "cicd-example",
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false
